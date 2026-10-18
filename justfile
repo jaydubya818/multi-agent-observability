@@ -43,6 +43,10 @@ server-prod:
 server-typecheck:
     cd {{project_root}}/apps/server && bun run typecheck
 
+# Run server tests
+server-test:
+    cd {{project_root}}/apps/server && bun run test
+
 # ─── Client (Vue + Vite, port 5173) ─────────────────────
 
 # Install client dependencies
@@ -61,10 +65,17 @@ client-build:
 client-preview:
     cd {{project_root}}/apps/client && bun run preview
 
+# Run client tests
+client-test:
+    cd {{project_root}}/apps/client && bun run test
+
 # ─── Install ─────────────────────────────────────────────
 
 # Install all dependencies (server + client)
 install: server-install client-install
+
+# Run all tests (server + client)
+test: server-test client-test
 
 # ─── Database ────────────────────────────────────────────
 
